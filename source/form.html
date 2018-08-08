@@ -1,0 +1,88 @@
+<button onclick="sub_show()">显示</button>
+<!-- 需要修改的地方:
+    1.jq是否需要删除
+    2.domain_name 字段
+    3.logo
+-->
+<!-- 表单begin -->
+<style>
+    #sub_box{display:none;position: fixed; width: 100%; height: 100%; padding-top: 10%;z-index: 999;top: 0;}
+    #sub_back{opacity:0;background: rgba(0,0,0,0.7);transition: 0.5s; width: 100%; height: 100%; position: absolute; top: 0;}
+    #sub_form{position: relative; width: 360px; border-radius: 4px;transition: 0.8s; margin: auto; box-shadow: 2px 2px 15px #000000; font-size: 14px; background: white;margin-top:-200%;}
+    #sub_form .line{margin-bottom: 20px; padding: 18px 0px; width: 215px; margin: auto;}
+    #sub_title {padding: 20px 0px; border-bottom: 1px solid #e6e6e6; margin-bottom: 25px;text-align: center}
+    .line span{ display: block; float: left; text-align: right; margin-right: 10px;color: #676767; font-size: 14px;}
+    .line input{border: none; border-bottom: 2px solid #d0d0d0; background: transparent;}
+    .line input:focus{border-color: #478fff;outline:none;}
+    .line button{outline:none;cursor: pointer;background: #478fff; border: 0px;width: 210px; line-height: 33px;border-radius: 4px; margin: auto; display: block; color: white;}
+    .a{text-align: center; color: #488dfb; line-height: 40px;cursor: pointer;margin-top: 10px;}
+</style>
+<div id="sub_box">
+    <div id="sub_back" onclick="sub_hide()"></div>
+    <form id="sub_form">
+        <div id="sub_title">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAAAlCAMAAAC02rHeAAAAilBMVEUAAAAAg94AhN8AhN4Qj+EGheAAheEBg+ESh90AhN4BheEAg+AMh90AhOQAg+Jwxu4ChOIBhOMAg+MAg+IAg+EAguMAg+MAg+EAhOQAhODrUwYAokL8xCfxWQYrslUlHBYAokIAokPzWwT2oRT9xiH+yBz29vP3YAIltxMDxngSv1T9+/cAhd38xjfMVHttAAAALHRSTlMA6ou1Di144Rf0OcEigpYIoFlGaNhwYVHOq/38wGc+GtizmkeSbSTNm41oFPiLXoMAAAMfSURBVFjD7ZZpc5swEIZXSAiEQAhxGJye6d2+/f9/r5IwvqK40y9JO83DcMyOgMe7O4vphRde+NeoJ8M1t2NFz0ansVE0gp6DPCgMVvajCVdsoqdnpwCT00o5MsBQimr3oIZV3E/kYVlHnik/3ubCsXX5TQdgOF8gLGBTJQOW9jLEGVGGU/kmuL5uCuprUnILaiWCRKFvdaSCvuqCBujpGgk+QZc3JMKLWuy8BLocW9ryQ15H3EgFB6sfxlR5GWkteEtODfUNCYt8k9jBNE3sLYMKgEJEYUkmAugeBEsGedkOM0w8M9YfXijPJXKdh6uRWkhbVOgaMAUeiqu4kKOUfo+nHSVoMCSi2UW0XqAmIiEd5TPm2GhLcS4hUZLw4q5FZOKcJIvr4G3rfEM8Uo0sEa2A03KpwOuQn7h0VFhEaOfqTELPocPJoSsjNSxlIdYhSHBsTJRiQJ+ICpy1kRnWHK4SVNqhJWqVOUkINBTQhRgjEgNZHurKYiaqjZJSFGm5Xp4khH/K0EWJLeCx7CTRoYo3IRMsUgwQ2vpEKBckpqw5bPkj5WgS0Tfvv9I5OfogwTuP28ZGdZTgwzpwjpbKsU6N/hZXBwlbbOwoRQaeiL67u/uekIjMa6iE3CRyfxkKpFVGu9nT5WTntaBB4rdUQJ6UeJ+QMGWAVma9SRgVY43wEhOsCYt3KOgo0fAVzR0l0YlUfHjz/u7uzUOJjM5oWHuQ4JZWvESPskXftgL2JMHVwsOmMVESh+uu+PzxVUvi2ztxW0JcTcxVImNhYGk3ohAniWF7zERpskuLD69+/vwcm7PT5pYEJSW09hLQueKqSUuksRdt4R1eUaBlh4kussyCZ5nBnEVqImcChTJmhjWeZpVw8Bfa1gMrJbo/kGgBIaR0tSirsfISn7ZPPNz6JbnCK/fFFXqV0HGQkVEVtXo4SoCtPC5RYu4YDiw/Pn56/XbtWN3Tn7FMZXX8t0MiHoyLwyqwDqs0VXz5MgBgy1j6tth7DalrekJ2gK3Xfj9wv9/fu5aekra//s1v9/v9a3puvvwNEm/vn9/hhf+OXwhFSsEhvzBvAAAAAElFTkSuQmCC" alt="logo">
+        </div>
+        <div class="line">
+            <span>姓名:</span><input type="text" id="sub_name" data-tips="请填写您的姓名" name="name">
+        </div>
+        <div class="line">
+            <span>电话:</span><input type="text" id="sub_phone"  data-tips="请填写您的手机号" name="phone">
+        </div>
+        <div class="line">
+            <button type="button" id="sub_btn1">提交</button>
+            <div class="a"><a href="http://p.qiao.baidu.com/cps/chat?siteId=10926156&userId=7453508" target="_blank">在线咨询</a></div>
+        </div>
+    </form>
+</div>
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+    function sub_show(){
+        $("#sub_box").css("display","block");
+        setTimeout(function(){$("#sub_form").css("margin-top","0px")});
+        setTimeout(function(){$("#sub_back").css("opacity","1")},300);
+    }
+    function sub_hide(){
+        $("#sub_form").css("margin-top","-200%");
+        setTimeout(function(){$("#sub_back").css("opacity","0")},300);
+        setTimeout(function(){$("#sub_box").css("display","none");},500);
+    }
+
+    sub_init("#sub_btn1",["#sub_name","#sub_phone"]);
+    //按钮id ，input id的数组
+    function sub_init(btn_id,input_id){
+        var btn = $(btn_id);
+        var input_dom = []; input_id.forEach(function(val){input_dom.push($(val))});
+        var prime_color = btn.css("background-color");
+        var prime_html = btn.html();
+        
+        btn.click(function(){
+            var send_data = {domain_name:"rhxinren.com"}
+            for(var i =0;i<input_dom.length;i++){
+                send_data[input_dom[i].attr("name")] = input_dom[i].val();
+                if(input_dom[i].val() === ""){
+                    subSend(false,input_dom[i].data("tips"));
+                    return;
+                }
+                if(input_dom[i].attr("name")==="phone" && input_dom[i].val().length !== 11){
+                    console.log(input_dom[i].val().length);
+                    subSend(false,"请输入正确的手机号");
+                    return;
+                }
+            };
+            btn.attr("disabled",true).html("提交中 请稍后...");
+            $.get("http://bd.88ming.cn/api/info/infoCollect",send_data,function(msg){subSend(true)});
+        
+        });
+        function subSend(state,txt){
+            if(state){
+                btn.html("提交成功").css("background","#51B151");
+            }else{
+                btn.html(txt).css("background","#e83e3e");
+                setTimeout(function(){btn.attr("disabled",false).html(prime_html).css("background",prime_color);},1000);
+            }
+        }
+    }
+</script>
+<!-- 表单end-->
