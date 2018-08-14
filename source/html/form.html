@@ -61,7 +61,7 @@
             var send_data = {domain_name:"rhxinren.com"}
             for(var i =0;i<input_dom.length;i++){
                 send_data[input_dom[i].attr("name")] = input_dom[i].val();
-                if(input_dom[i].val() === ""){
+                if(input_dom[i].val() === "" && input_dom[i].data("tips") !== ""){
                     subSend(false,input_dom[i].data("tips"));
                     return;
                 }
